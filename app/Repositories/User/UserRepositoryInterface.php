@@ -7,7 +7,7 @@ namespace App\Repositories\User;
 use App\Models\User;
 use App\ValueObjects\User\Document\Document;
 
-interface UserRepository
+interface UserRepositoryInterface
 {
     public function create(User $user): User;
     public function findById(int $id): User;
