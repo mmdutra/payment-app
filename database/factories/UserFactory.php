@@ -21,9 +21,14 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $this->faker = \Faker\Factory::create('pt_BR');
+
         return [
             'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail
+            'email' => $this->faker->unique()->safeEmail,
+            'document' => $this->faker->cnpj(false),
+            'type' => 'S',
+            'password' => $this->faker->password
         ];
     }
 }
