@@ -6,15 +6,15 @@ namespace App\Services\User;
 
 use App\Exceptions\User\DocumentAlreadyExistsException;
 use App\Models\User;
-use App\Repositories\User\UserRepository;
+use App\Repositories\User\UserRepositoryInterface;
 use App\ValueObjects\User\Document\Document;
 use App\ValueObjects\User\Type;
 
 class CreateUser
 {
-    private UserRepository $userRepository;
+    private UserRepositoryInterface $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepositoryInterface $userRepository)
     {
         $this->userRepository = $userRepository;
     }

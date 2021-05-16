@@ -6,7 +6,7 @@ namespace Unit\Services\User;
 
 use App\Exceptions\User\DocumentAlreadyExistsException;
 use App\Models\User;
-use App\Repositories\User\UserRepository;
+use App\Repositories\User\UserRepositoryInterface;
 use App\Services\User\CreateUser;
 use App\ValueObjects\User\Document\CPF;
 use App\ValueObjects\User\Type;
@@ -19,7 +19,7 @@ class CreateUserTest extends \TestCase
     {
         parent::setUp();
         
-        $this->userRepositoryMock = $this->createMock(UserRepository::class);
+        $this->userRepositoryMock = $this->createMock(UserRepositoryInterface::class);
     }
 
     public function testShouldInformInvalidDocument()
