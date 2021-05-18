@@ -15,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton(\Faker\Generator::class, fn () => \Faker\Factory::create('pt_BR'));
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
     }
 }
