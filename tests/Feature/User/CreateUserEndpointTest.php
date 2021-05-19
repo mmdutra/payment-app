@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Feature\User;
 
-use App\Models\User;
+use App\User\Models\User;
+use Database\Factories\UserFactory;
 use Laravel\Lumen\Testing\DatabaseMigrations;
 
 class CreateUserEndpointTest extends \TestCase
@@ -19,7 +20,7 @@ class CreateUserEndpointTest extends \TestCase
 
     public function testShouldNotAddUserWithAlreadyExistentDocument()
     {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->create();
         
         $data = [
             'name' => 'example',
