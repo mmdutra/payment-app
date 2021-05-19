@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    private $createTransaction;
+    private CreateTransaction $createTransaction;
 
     public function __construct(CreateTransaction $createTransaction)
     {
