@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\User\Http\Controllers;
 
-use App\Exceptions\User\DocumentAlreadyExistsException;
-use App\Services\User\CreateUser;
+use App\Http\Controllers\Controller;
+use App\User\Exceptions\DocumentAlreadyExistsException;
+use App\User\Services\CreateUser;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class CreateUserController extends Controller
 {
     private CreateUser $createUser;
 

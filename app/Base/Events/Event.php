@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace App\Base\Events;
 
 use Illuminate\Queue\SerializesModels;
 
