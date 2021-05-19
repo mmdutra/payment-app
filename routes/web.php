@@ -18,5 +18,5 @@ $router->get('/', function () use ($router) {
 });
 
 $router->group(['prefix' => 'users'], function () use ($router) {
-    $router->post('/', 'UserController@store');
+    $router->post('/', '\App\User\Http\Controllers\UserController@store');
 });
