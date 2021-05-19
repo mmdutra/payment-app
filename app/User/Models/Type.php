@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\ValueObjects\User;
+namespace App\User\Models;
 
-use App\ValueObjects\User\Document\CNPJ;
-use App\ValueObjects\User\Document\Document;
+use App\User\Models\Document\CNPJ;
+use App\User\Models\Document\Document;
 
 class Type
 {

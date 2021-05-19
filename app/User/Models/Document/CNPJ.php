@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\ValueObjects\User\Document;
+namespace App\User\Models\Document;
 
 class CNPJ extends Document
 {

@@ -2,13 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Services\User;
+namespace App\User\Services;
 
-use App\Exceptions\User\DocumentAlreadyExistsException;
-use App\Models\User;
-use App\Repositories\User\UserRepositoryInterface;
-use App\ValueObjects\User\Document\Document;
-use App\ValueObjects\User\Type;
+use App\User\Exceptions\DocumentAlreadyExistsException;
+use App\User\Models\{Type, User, UserRepositoryInterface};
+use App\User\Models\Document\Document;
 
 class CreateUser
 {

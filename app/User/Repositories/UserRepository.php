@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Repositories\User;
+namespace App\User\Repositories;
 
-use App\Exceptions\User\UserNotFoundException;
-use App\Models\User;
-use App\ValueObjects\User\Document\Document;
+use App\User\Exceptions\UserNotFoundException;
+use App\User\Models\User;
+use App\User\Models\UserRepositoryInterface;
+use App\User\Models\Document\Document;
 use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements UserRepositoryInterface
