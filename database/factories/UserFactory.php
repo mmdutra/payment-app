@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\User\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class UserFactory extends Factory
@@ -21,8 +21,6 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $this->faker = \Faker\Factory::create('pt_BR');
-
         return [
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
