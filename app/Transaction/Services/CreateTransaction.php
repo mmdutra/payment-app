@@ -12,8 +12,8 @@ use App\Transaction\Exceptions\SellerTransactionException;
 
 class CreateTransaction
 {
-    private $transactionRepository;
-    private $userRepository;
+    private TransactionRepositoryInterface $transactionRepository;
+    private UserRepositoryInterface $userRepository;
 
     public function __construct(
         TransactionRepositoryInterface $transactionRepository,
