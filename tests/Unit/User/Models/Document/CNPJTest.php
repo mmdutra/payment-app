@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Unit\ValueObjects\User\Document;
+namespace Unit\User\Models\Document;
 
-use App\ValueObjects\User\Document\CNPJ;
+use App\User\Models\Document\CNPJ;
 
 class CNPJTest extends \TestCase
 {

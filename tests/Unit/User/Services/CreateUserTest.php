@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Unit\Services\User;
+namespace Unit\User\Services;
 
-use App\Exceptions\User\DocumentAlreadyExistsException;
-use App\Models\User;
-use App\Repositories\User\UserRepositoryInterface;
-use App\Services\User\CreateUser;
-use App\ValueObjects\User\Document\CPF;
-use App\ValueObjects\User\Type;
+use App\User\Exceptions\DocumentAlreadyExistsException;
+use App\User\Models\Document\CPF;
+use App\User\Models\Type;
+use App\User\Models\User;
+use App\User\Models\UserRepositoryInterface;
+use App\User\Services\CreateUser;
 
 class CreateUserTest extends \TestCase
 {

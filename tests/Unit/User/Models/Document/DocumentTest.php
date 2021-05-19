@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Unit\ValueObjects\User\Document;
+namespace Unit\User\Models\Document;
 
-use App\ValueObjects\User\Document\CNPJ;
-use App\ValueObjects\User\Document\CPF;
-use App\ValueObjects\User\Document\Document;
+use App\User\Models\Document\{CNPJ, CPF, Document};
 
 class DocumentTest extends \TestCase
 {

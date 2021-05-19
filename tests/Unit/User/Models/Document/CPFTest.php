@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Unit\ValueObjects\User\Document;
+namespace Unit\User\Models\Document;
 
-use App\ValueObjects\User\Document\CPF;
+use App\User\Models\Document\CPF;
 
 class CPFTest extends \TestCase
 {
