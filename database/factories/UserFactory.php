@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\User\Models\Type;
 use App\User\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -25,7 +26,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
             'document' => $this->faker->cnpj(false),
-            'type' => 'S',
+            'type' => Type::SELLER,
             'password' => $this->faker->password
         ];
     }

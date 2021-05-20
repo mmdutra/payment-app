@@ -93,6 +93,7 @@ $app->configure('app');
 
 $app->register(App\Base\Providers\AppServiceProvider::class);
 $app->register(App\User\Providers\UserServiceProvider::class);
+$app->register(\App\Transaction\Providers\TransactionServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
