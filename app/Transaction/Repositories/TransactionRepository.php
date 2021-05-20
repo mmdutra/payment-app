@@ -15,4 +15,11 @@ class TransactionRepository implements TransactionRepositoryInterface
         
         return $transaction;
     }
+
+    public function update(Transaction $transaction, array $data): Transaction
+    {
+        $transaction->fill($data);
+        
+        return $transaction;
+    }
 }
