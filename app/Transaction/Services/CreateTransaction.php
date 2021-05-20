@@ -24,7 +24,7 @@ class CreateTransaction
         $this->userRepository = $userRepository;
     }
 
-    public function create(array $data): void
+    public function create(array $data): Transaction
     {
         $payer = $this->userRepository->findById((int) $data['payer']);
         $payee = $this->userRepository->findById((int) $data['payee']);
@@ -40,6 +40,6 @@ class CreateTransaction
             'status' => Status::UNDER_ANALYSIS
         ]);
         
-        $this->transactionRepository->create($transaction);
+        return $this->transactionRepository->create($transaction);
     }
 }
