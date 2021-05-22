@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Feature\Transaction;
 
+use App\Base\Events\Event;
+use App\Transaction\Events\TransactionNotificationEvent;
 use App\User\Models\Type;
 use Database\Factories\UserFactory;
 use Laravel\Lumen\Testing\DatabaseMigrations;
@@ -57,6 +59,8 @@ class CreateTransactionEndpointTest extends \TestCase
             'value' => 50
         ];
         
+        static::expectsEvents(TransactionNotificationEvent::class);
+
         $this->post('/transaction', $data)
             ->assertResponseStatus(201);
     }
