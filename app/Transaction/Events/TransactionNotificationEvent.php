@@ -16,7 +16,7 @@ class TransactionNotificationEvent extends Event
         $this->transaction = $transaction;
     }
     
-    protected function getTransaction(): Transaction
+    public function getTransaction(): Transaction
     {
         return $this->transaction;
     }
