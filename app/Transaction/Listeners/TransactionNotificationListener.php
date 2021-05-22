@@ -30,7 +30,7 @@ class TransactionNotificationListener
             ]);
         } catch (\Exception $exception) {
             $exceptionClass = get_class($exception);
-            Log::error("Erro ao tentar enviar notificação: {$exceptionClass}: {$exception->getMessage()}");
+            Log::error("Error trying to send notifications: {$exceptionClass}: {$exception->getMessage()}");
         }
     }
 }
