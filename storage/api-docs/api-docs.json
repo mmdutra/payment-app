@@ -11,6 +11,9 @@
     "paths": {
         "/transactions": {
             "post": {
+                "tags": [
+                    "Transactions"
+                ],
                 "description": "Store transaction",
                 "operationId": "App\\Transaction\\Http\\Controllers\\TransactionController::store",
                 "requestBody": {
@@ -41,6 +44,53 @@
                     },
                     "403": {
                         "description": "Unauthorized transaction"
+                    },
+                    "422": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Store user",
+                "operationId": "App\\User\\Http\\Controllers\\UserController::store",
+                "requestBody": {
+                    "description": "User object that needs to be created",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "cpf": {
+                                        "description": "CPF/CNPJ",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success"
+                    },
+                    "403": {
+                        "description": "Document already exists exception"
                     },
                     "422": {
                         "description": "Invalid data"

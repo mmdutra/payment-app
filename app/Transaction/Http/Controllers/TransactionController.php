@@ -28,6 +28,7 @@ class TransactionController extends Controller
     /**
      * @OA\Post(
      *     path="/transactions",
+     *     tags={"Transactions"},
      *     description="Store transaction",
      *     @OA\RequestBody(
      *         required=true,
