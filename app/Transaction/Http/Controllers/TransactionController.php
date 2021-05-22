@@ -11,6 +11,7 @@ use App\Transaction\Exceptions\UnauthorizedTransactionException;
 use App\Transaction\Services\CreateTransaction;
 use App\Transaction\Services\TransactionAuthorization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TransactionController extends Controller
 {
@@ -66,12 +67,17 @@ class TransactionController extends Controller
         ]);
 
         try {
+            Log::info("Registering new transaction");
             $transaction = $this->createTransaction->create($request->all());
+            Log::info("Transaction {$transaction->id} registered");
             
             $this->transactionAuthorization->authorize($transaction);
+            Log::info("Transaction authorized");
             
             event(new TransactionNotificationEvent($transaction));
+            Log::info("Notifications sent");
         } catch (SellerTransactionException | UnauthorizedTransactionException $exception) {
+            Log::error("Unauthorized transaction. Cause: {$exception->getMessage()}");
             return response()->json(['message' => $exception->getMessage()], 403);
         }
     
