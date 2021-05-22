@@ -76,8 +76,8 @@ class TransactionController extends Controller
             
             event(new TransactionNotificationEvent($transaction));
             Log::info("Notifications of transation {$transaction->id} sent");
-        } catch (SellerTransactionException | UnauthorizedTransactionException $exception) {
-            Log::error("Unauthorized transaction {$transaction->id}. Cause: {$exception->getMessage()}");
+        } catch (\InvalidArgumentException | SellerTransactionException | UnauthorizedTransactionException $exception) {
+            Log::error("Unauthorized transaction. Cause: {$exception->getMessage()}");
             return response()->json(['message' => $exception->getMessage()], 403);
         }
     

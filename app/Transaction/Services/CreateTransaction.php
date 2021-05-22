@@ -26,6 +26,10 @@ class CreateTransaction
 
     public function create(array $data): Transaction
     {
+        if ($data['payer'] == $data['payee']) {
+            throw new \InvalidArgumentException("Payer and Payee must be differents");
+        }
+    
         $payer = $this->userRepository->findById((int) $data['payer']);
         $payee = $this->userRepository->findById((int) $data['payee']);
         

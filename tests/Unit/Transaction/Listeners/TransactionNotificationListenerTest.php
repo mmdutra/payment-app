@@ -71,7 +71,7 @@ class TransactionNotificationListenerTest extends \TestCase
 
         Log::shouldReceive('error')
             ->once()
-            ->with('Erro ao tentar enviar notificação: GuzzleHttp\Exception\RequestException: error');
+            ->with('Error trying to send notifications: GuzzleHttp\Exception\RequestException: error');
             
         $listener = new TransactionNotificationListener($this->clientMock);
         $listener->handle($event);

@@ -13,6 +13,7 @@ use App\User\Exceptions\UserNotFoundException;
 use App\User\Models\Type;
 use App\User\Models\UserRepositoryInterface;
 use Database\Factories\UserFactory;
+use Illuminate\Support\Facades\Log;
 
 class CreateTransactionTest extends \TestCase
 {
@@ -25,6 +26,14 @@ class CreateTransactionTest extends \TestCase
         
         $this->userRepositoryMock = $this->createMock(UserRepositoryInterface::class);
         $this->transactionRepositoryMock = $this->createMock(TransactionRepositoryInterface::class);
+    }
+
+    public function testShouldNotRegisterPayerAndPayeeWithSameId()
+    {
+        $service = new CreateTransaction($this->transactionRepositoryMock, $this->userRepositoryMock);
+        
+        static::expectException(\InvalidArgumentException::class);
+        $service->create(['payer' => 1, 'payee' => 1]);
     }
 
     public function testShouldNotMakeTransactionFromSeller()
@@ -50,9 +59,9 @@ class CreateTransactionTest extends \TestCase
             ->willThrowException(new UserNotFoundException());
             
         $service = new CreateTransaction($this->transactionRepositoryMock, $this->userRepositoryMock);
-        
+            
         static::expectException(UserNotFoundException::class);
-        $service->create(['payer' => 1]);
+        $service->create(['payer' => 1, 'payee' => 2]);
     }
 
     public function testShouldRegisterATransaction()
