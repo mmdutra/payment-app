@@ -94,8 +94,8 @@ $app->configure('swagger-lume');
 
 $app->register(App\Base\Providers\AppServiceProvider::class);
 $app->register(App\User\Providers\UserServiceProvider::class);
-$app->register(\App\Transaction\Providers\TransactionServiceProvider::class);
-$app->register(\SwaggerLume\ServiceProvider::class);
+$app->register(App\Transaction\Providers\TransactionServiceProvider::class);
+$app->register(App\Transaction\Providers\EventServiceProvider::class);
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

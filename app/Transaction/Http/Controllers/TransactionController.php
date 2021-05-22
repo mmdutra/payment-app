@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Transaction\Http\Controllers;
 
 use App\Base\Http\Controllers\Controller;
+use App\Transaction\Events\TransactionNotificationEvent;
 use App\Transaction\Exceptions\SellerTransactionException;
 use App\Transaction\Exceptions\UnauthorizedTransactionException;
 use App\Transaction\Services\CreateTransaction;
@@ -68,6 +69,8 @@ class TransactionController extends Controller
             $transaction = $this->createTransaction->create($request->all());
             
             $this->transactionAuthorization->authorize($transaction);
+            
+            event(new TransactionNotificationEvent($transaction));
         } catch (SellerTransactionException | UnauthorizedTransactionException $exception) {
             return response()->json(['message' => $exception->getMessage()], 403);
         }
