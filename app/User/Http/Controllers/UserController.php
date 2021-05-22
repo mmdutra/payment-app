@@ -18,6 +18,38 @@ class UserController extends Controller
         $this->createUser = $createUser;
     }
 
+    /**
+     * @OA\Post(
+     *     path="/users",
+     *     tags={"Users"},
+     *     description="Store user",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="User object that needs to be created",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(property="name", type="string"),
+     *                 @OA\Property(property="email", type="string", format="email"),
+     *                 @OA\Property(property="cpf", description="CPF/CNPJ", type="string"),
+     *                 @OA\Property(property="password", type="string")
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Success"
+     *     ),
+     *     @OA\Response(
+     *         response=403,
+     *         description="Document already exists exception"
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Invalid data"
+     *     )
+     * )
+     */
     public function store(Request $request)
     {
         $this->validate($request, [

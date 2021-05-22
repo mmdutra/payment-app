@@ -25,7 +25,38 @@ class TransactionController extends Controller
         $this->createTransaction = $createTransaction;
         $this->transactionAuthorization = $transactionAuthorization;
     }
-
+    
+    /**
+     * @OA\Post(
+     *     path="/transactions",
+     *     tags={"Transactions"},
+     *     description="Store transaction",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="Transaction object that needs to be created",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(property="payer", type="integer"),
+     *                 @OA\Property(property="payee", type="integer"),
+     *                 @OA\Property(property="value", type="number")
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Success"
+     *     ),
+     *     @OA\Response(
+     *         response=403,
+     *         description="Unauthorized transaction"
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Invalid data"
+     *     )
+     * )
+     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -42,8 +73,6 @@ class TransactionController extends Controller
             event(new TransactionNotificationEvent($transaction));
         } catch (SellerTransactionException | UnauthorizedTransactionException $exception) {
             return response()->json(['message' => $exception->getMessage()], 403);
-        } catch (\Exception $exception) {
-            return response()->json(['message' => $exception->getMessage()], 500);
         }
     
         return response()->json(['message' => 'Transaction registered with success.'], 201);
