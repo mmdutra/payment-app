@@ -15,7 +15,7 @@ class CreateTransactionEndpointTest extends \TestCase
     public function testShouldNotAcceptTheTransactionWithInvalidData()
     {
         $data = [];
-        $this->post('/transaction', $data)
+        $this->post('/transactions', $data)
             ->assertResponseStatus(422);
     }
 
@@ -27,7 +27,7 @@ class CreateTransactionEndpointTest extends \TestCase
             'value' => 1000
         ];
         
-        $this->post('/transaction', $data)
+        $this->post('/transactions', $data)
             ->assertResponseStatus(422);
     }
 
@@ -42,7 +42,7 @@ class CreateTransactionEndpointTest extends \TestCase
             'value' => 50
         ];
         
-        $this->post('/transaction', $data)
+        $this->post('/transactions', $data)
             ->assertResponseStatus(403);
     }
 
@@ -57,7 +57,7 @@ class CreateTransactionEndpointTest extends \TestCase
             'value' => 50
         ];
         
-        $this->post('/transaction', $data)
+        $this->post('/transactions', $data)
             ->assertResponseStatus(201);
     }
 }

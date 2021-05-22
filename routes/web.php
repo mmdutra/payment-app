@@ -21,6 +21,6 @@ $router->group(['prefix' => 'users'], function () use ($router) {
     $router->post('/', '\App\User\Http\Controllers\UserController@store');
 });
 
-$router->group(['prefix' => 'transaction'], function () use ($router) {
+$router->group(['prefix' => 'transactions'], function () use ($router) {
     $router->post('/', '\App\Transaction\Http\Controllers\TransactionController@store');  
 });

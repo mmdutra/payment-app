@@ -1,0 +1,52 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Payment API",
+        "contact": {
+            "name": "Mateus Morais",
+            "email": "mmdutra14@gmail.com"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/transactions": {
+            "post": {
+                "description": "Store transaction",
+                "operationId": "App\\Transaction\\Http\\Controllers\\TransactionController::store",
+                "requestBody": {
+                    "description": "Transaction object that needs to be created",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "payer": {
+                                        "type": "integer"
+                                    },
+                                    "payee": {
+                                        "type": "integer"
+                                    },
+                                    "value": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success"
+                    },
+                    "403": {
+                        "description": "Unauthorized transaction"
+                    },
+                    "422": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        }
+    }
+}
