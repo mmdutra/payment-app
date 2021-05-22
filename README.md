@@ -1,24 +1,36 @@
-# Lumen PHP Framework
+# API de pagamento
+API para realizar transaferências entre usuários.
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+## Tecnologias utilizadas :computer:
+- Docker e Docker Compose
+- PHP 7.4
+- Lumen
+- PHPUnit
+- MySql
+- Nginx
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Instalação e execução
+Rodar o seguinte comando:
+```
+docker-compose up -d --build
+```
+Após isso, a aplicação está rodando na porta 8000 da sua máquina local.
 
-## Official Documentation
+## Decisões importantes
+- Utilizar o micro-framework Lumen foi a melhor decisão, pois é uma ferramenta que já possuo maior familiariedade;
+- O projeto foi desenvolvido utilizando TDD (Test-Drive Development), ou seja, escrevendo os testes de unidade antes de realizar a implementação de fato;
+- Foram desenvolvidos testes de integração e de unidade, para ter maior cobertura e confiança no desenvolvimento e entrega do software;
+- Banco de dados foi esclhido pois tenho mais familiariedade, além de que também seria um banco de dados que atenderia com certeza a demanda do serviço;
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+## Arquitetura
+Foi seguido a arquitetura padrão do framework, porém separando a aplicação em contextos, exemplo:
+```
+  App\
+    - Transaction\
+    - User\
+```
+O objetivo desse modelo é isolar as diferentes "partes" do software de forma a deixar mais organizado, manutenível e limpo. 
 
-## Contributing
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Documentação da API 
+Para visualizar a documentação da API, acesse o endpoint ```/api/documentation```. 
